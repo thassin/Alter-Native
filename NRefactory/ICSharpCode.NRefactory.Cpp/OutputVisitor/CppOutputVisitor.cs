@@ -130,7 +130,7 @@ namespace ICSharpCode.NRefactory.Cpp
             {
                 if (lastWritten == LastWritten.KeywordOrIdentifier)
                     Space(); // this space is not strictly required, so we call Space()
-                formatter.WriteToken("@");
+                formatter.WriteToken("_an_"); // rename an identifier which conflicts with a keyword.
             }
             else if (lastWritten == LastWritten.KeywordOrIdentifier)
             {

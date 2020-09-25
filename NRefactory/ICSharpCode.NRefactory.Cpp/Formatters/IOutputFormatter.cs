@@ -32,7 +32,7 @@ namespace ICSharpCode.NRefactory.Cpp
 		/// <summary>
 		/// Writes an identifier.
 		/// If the identifier conflicts with a keyword, the output visitor will
-		/// call <c>WriteToken("@")</c> before calling WriteIdentifier().
+		/// call <c>WriteToken("_an_")</c> before calling WriteIdentifier().
 		/// </summary>
 		void WriteIdentifier(string identifier);
 		
