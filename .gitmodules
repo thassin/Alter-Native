@@ -1,0 +1,6 @@
+[submodule "Lib"]
+	path = Lib
+	url = https://github.com/thassin/AlterNative-CXX-Lib.git
+[submodule "Tests/public"]
+	path = Tests/public
+	url = https://github.com/thassin/AlterNative-Tests.git
