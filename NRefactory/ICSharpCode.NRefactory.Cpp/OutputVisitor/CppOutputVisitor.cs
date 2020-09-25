@@ -3593,6 +3593,8 @@ namespace ICSharpCode.NRefactory.Cpp
             else
             {
                 ptrType.Target.AcceptVisitor(this, data);
+
+// this will print out a pointer type, like "Foo* ptr = something;".
                 WriteToken("*", PtrType.PointerRole);
             }
             return EndNode(ptrType);
@@ -3614,6 +3616,10 @@ namespace ICSharpCode.NRefactory.Cpp
         public object VisitPointerExpression(PointerExpression pointerExpression, object data)
         {
             StartNode(pointerExpression);
+
+// this will print out a dereferencing-expression, like "int foo = (*ptr1->x + *ptr2->y);".
+// -> being a part of an EXPRESSION seems to be essential, won't happen on a simple substitution.
+// PROBLEM :: see Tests/public/PT003.n_body/src/n-body/Class1.cs :: incorrect code is generated.
             WriteToken("*", PointerExpression.AsteriskRole);
 
             if (!(pointerExpression.Target is IdentifierExpression))
