@@ -251,7 +251,9 @@ namespace ICSharpCode.NRefactory.Cpp
 
         public static String RefactorStringSwitchStatement(SwitchStatement switchStatement)
         {
-            string switchName = ("s" + switchStatement.GetHashCode());
+            //string switchName = ("s" + switchStatement.GetHashCode()); BAD :: c++ compiler won't accept identifiers like "s-1234".
+            string switchName = ("s" + (uint) switchStatement.GetHashCode()); // do NOT allow minus character '-' in switchName.
+
             var invocation = new InvocationExpression(new MemberReferenceExpression(
                 new IdentifierExpression(switchName), Constants.ParseStringSwitch) { isValueType = true }, new List<Expression>() { switchStatement.Expression.Clone() });
             switchStatement.Expression = invocation;
@@ -269,7 +271,6 @@ namespace ICSharpCode.NRefactory.Cpp
 
             return switchName;
         }
-
 
         /// <summary>
         /// Returns if a forward declaration is needed between two types

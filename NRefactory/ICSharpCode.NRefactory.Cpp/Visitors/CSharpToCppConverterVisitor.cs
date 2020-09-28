@@ -1808,14 +1808,12 @@ namespace ICSharpCode.NRefactory.Cpp.Visitors
 
             if (Resolver.IsStringSwitch(_switch))
             {
-
                 string switchIdentifier = Resolver.RefactorStringSwitchStatement(_switch);
 
                 //ADD HEADER NODE
                 //STRING_SWITCH(mySwitch, 3, case1, case2, case3);
 
                 HeaderMacroExpression hm = new HeaderMacroExpression();
-
 
                 hm.Target = new IdentifierExpression(Constants.SwitchStringMacro);
 
